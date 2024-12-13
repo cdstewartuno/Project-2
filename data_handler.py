@@ -1,9 +1,13 @@
+"""
+Handles data operations for storing, retrieving, and updating accounts.
+"""
 import csv
 import os
 from constants import EXCEL_FILE  # Still using the same file name, but it will be CSV
 
 def initialize_csv():
-    """Creates the CSV file with appropriate headers if it doesn't already exist."""
+    """Creates the CSV file with headers if it does not exist."""
+    #Creates the CSV file with appropriate headers if it doesn't already exist.
     try:
         if not os.path.exists(EXCEL_FILE):
             with open(EXCEL_FILE, mode='w', newline='') as file:
@@ -15,7 +19,8 @@ def initialize_csv():
 
 
 def get_account(first_name, last_name, pin):
-    """Retrieves account details if First Name, Last Name, and PIN match."""
+    """Retrieves an account by First Name, Last Name, and PIN."""
+    #Retrieves account details if First Name, Last Name, and PIN match.
     try:
         with open(EXCEL_FILE, mode='r', newline='') as file:
             reader = csv.reader(file)
@@ -35,7 +40,8 @@ def get_account(first_name, last_name, pin):
 
 
 def add_account(first_name, last_name, pin, account_type, balance):
-    """Adds a new account to the CSV file."""
+    """Adds a new account to the data store."""
+    #Adds a new account to the CSV file.
     try:
         # Check if the PIN already exists
         accounts = get_all_accounts()
@@ -54,6 +60,7 @@ def add_account(first_name, last_name, pin, account_type, balance):
 
 def update_account(pin, new_balance):
     """Updates the balance of an account identified by its PIN."""
+    #Updates the balance of an account identified by its PIN.
     try:
         accounts = get_all_accounts()
         updated = False
@@ -71,7 +78,8 @@ def update_account(pin, new_balance):
     return False  # Account not found
 
 def get_all_accounts():
-    """Retrieves all accounts as a list of dictionaries."""
+    """Retrieves all accounts from the data store."""
+    #Retrieves all accounts as a list of dictionaries.
     accounts = []
     try:
         with open(EXCEL_FILE, mode='r', newline='') as file:

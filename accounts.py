@@ -1,5 +1,6 @@
 class Account:
     def __init__(self, first_name, last_name, pin, balance=0):
+        """Initializes an account with the holder's details and balance."""
         self.__first_name = first_name
         self.__last_name = last_name
         self.__pin = pin
@@ -41,6 +42,7 @@ class SavingAccount(Account):
     INTEREST_RATE = 0.02
 
     def __init__(self, first_name, last_name, pin, balance=MINIMUM_BALANCE):
+        """Initializes a savings account with a minimum balance."""
         super().__init__(first_name, last_name, pin, balance)
         self.__deposit_count = 0
 
@@ -67,7 +69,7 @@ class SavingAccount(Account):
 
     def set_balance(self, amount):
         """Sets the balance, ensuring it does not fall below the minimum."""
-        super().set_balance(max(amount, self.MINIMUM_BALANCE))
+        self._Account__balance = max(amount, self.MINIMUM_BALANCE)
 
     def __str__(self):
         """Returns a string representation of the savings account."""
@@ -78,6 +80,7 @@ class CheckingAccount(Account):
     OVERDRAFT_LIMIT = -500
 
     def __init__(self, first_name, last_name, pin, balance=0):
+        """Initializes a checking account with an overdraft limit."""
         super().__init__(first_name, last_name, pin, balance)
 
     def withdraw(self, amount):

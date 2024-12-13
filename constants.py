@@ -1,5 +1,5 @@
 # File paths
-EXCEL_FILE = "bank_accounts.csv"  # Changed to CSV
+EXCEL_FILE = "bank_accounts.csv"  # Changed to CSV format for simplicity
 
 # Error messages
 ERROR_PIN = "PIN must be exactly 4 digits."

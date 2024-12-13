@@ -1,3 +1,6 @@
+"""
+Defines the graphical user interface for the Bank application.
+"""
 import tkinter as tk
 from tkinter import messagebox
 from accounts import CheckingAccount, SavingAccount
@@ -7,15 +10,16 @@ from constants import ERROR_PIN, ERROR_NAME, ERROR_AMOUNT, ERROR_CREDENTIALS
 
 class BankApp:
     def __init__(self):
+        """Initializes the main application window."""
         self.app = tk.Tk()
         self.app.title("Bank App")
-
         self.first_name_entry = None
         self.last_name_entry = None
         self.pin_entry = None
-        self.account_type_var = tk.StringVar(value="Checking")  # Default to Checking
+        self.account_type_var = tk.StringVar(value="Checking")
 
     def create_account(self):
+        """Handles the creation of a new account."""
         first_name = self.first_name_entry.get().strip()
         last_name = self.last_name_entry.get().strip()
         pin = self.pin_entry.get().strip()
@@ -49,6 +53,7 @@ class BankApp:
                 messagebox.showerror("Error", "An account with this PIN already exists.")
 
     def login(self):
+        """Handles user login to an existing account."""
         first_name = self.first_name_entry.get().strip()
         last_name = self.last_name_entry.get().strip()
         pin = self.pin_entry.get().strip()
@@ -76,6 +81,7 @@ class BankApp:
         self.transaction_window(account)
 
     def transaction_window(self, account):
+        """Opens a transaction window for the given account."""
         def perform_transaction():
             action = action_var.get()
             amount_str = amount_entry.get().strip()
